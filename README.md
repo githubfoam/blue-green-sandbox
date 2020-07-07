@@ -6,5 +6,5 @@ Travis (.com) branch:
 
 
 ~~~~
-https://linkerd.io/2/getting-started/
+
 ~~~~
