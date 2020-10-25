@@ -39,4 +39,5 @@ matrix:
         - sudo make deploy-minikube-latest
         - sudo make deploy-bluegreen
       after_success:
+        - bash <(curl -s https://codecov.io/bash
         - deactivate
