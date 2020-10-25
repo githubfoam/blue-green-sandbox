@@ -1,27 +1,31 @@
----
-sudo: required
-dist: bionic
+env:
+  global:
+    # COVERITY_SCAN_TOKEN
+    # ** specific to your project **
+    # - secure: "xxxx"
 
-notifications:
-  slack:
-    on_failure: always
+addons:
+  coverity_scan:
 
-matrix:
-  fast_finish: true
-  include:
+    # GitHub project metadata
+    # ** specific to your project **
+    project:
+      name: githubfoam/blue-green-sandbox
+      version: 1.0
+      description: blue-green-sandbox
 
-    - name: "blue green minikube latest  Python 3.7 on bionic amd64" #OK
-      dist: bionic
-      arch: amd64
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
-      script:
-        - sudo make deploy-minikube-latest
-        - sudo make deploy-bluegreen
-      after_success:
-        - deactivate
+    # Where email notification of build analysis results will be sent
+    notification_email: scan_notifications@example.com
+
+    # Commands to prepare for build_command
+    # ** likely specific to your build **
+    build_command_prepend: ./configure
+
+    # The command that will be added as an argument to "cov-build" to compile your project for analysis,
+    # ** likely specific to your build **
+    build_command: make
+
+    # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
+    # Take care in resource usage, and consider the build frequency allowances per
+    #   https://scan.coverity.com/faq#frequency
+    branch_pattern: coverity_scan
