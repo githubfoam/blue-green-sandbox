@@ -3,6 +3,7 @@ env:
     # COVERITY_SCAN_TOKEN
     # ** specific to your project **
     # - secure: "xxxx"
+    - secure: $COVERITY_SCAN_TOKEN
 
 addons:
   coverity_scan:
@@ -15,7 +16,9 @@ addons:
       description: blue-green-sandbox
 
     # Where email notification of build analysis results will be sent
-    notification_email: scan_notifications@example.com
+    # notification_email: scan_notifications@example.com
+    notification_email: $COVERITY_SCAN_NOTIFICATION_EMAIL
+    
 
     # Commands to prepare for build_command
     # ** likely specific to your build **

@@ -17,4 +17,11 @@ shields.io service
 
 ~~~~
 
+https://scan.coverity.com/
+
+https://dashboard.gitguardian.com
+~~~~
+
+~~~~
+https://docs.travis-ci.com/user/coverity-scan/
 ~~~~
