@@ -30,11 +30,11 @@ matrix:
           build_command_prepend: "./configure; make clean"
           build_command:   "make -j 4"
           branch_pattern: coverity_scan       
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
+      # before_install:
+      #   - pip3 install virtualenv
+      #   - virtualenv -p $(which python3) ~venvpy3
+      #   - source ~venvpy3/bin/activate
+      #   - pip install -r requirements.txt
       script:
         - sudo make deploy-minikube-latest
         - sudo make deploy-bluegreen
